@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mad_flutter_labs/routes/Routes.dart';
-import 'package:mad_flutter_labs/homepage.dart';
-import 'package:mad_flutter_labs/routes/roughwork.dart';
-import 'package:mad_flutter_labs/widgets/navigation.dart';
-import 'package:mad_flutter_labs/widgets/resume.dart';
-import 'package:mad_flutter_labs/routes/roughwork.dart';
+import 'package:mad_flutter_labs/resume.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,16 +13,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => resume(),
-        // '/': (context) => ControllerApp(),
-        // '/':(context)=>HomePage(),
-        // '/': (context) => nav_bar(),
-        '/notes': (context) => NotesPage(),
-        '/contacts': (context) => ContactsPage(),
-        '/events': (context) => EventsPage(),
-        '/report': (context) => Report()
+        // '/': (context) => MyApp(),
       },
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       // home: MyHomePage(title: 'Flutter Login'),
     );

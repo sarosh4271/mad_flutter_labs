@@ -1,34 +1,28 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class coverletter extends StatefulWidget {
+class personal extends StatefulWidget {
   @override
-  _coverletterState createState() => _coverletterState();
+  _personalState createState() => _personalState();
 }
 
-class _coverletterState extends State<coverletter> {
-  bool value = false;
-
-  Widget buildswitch() {
-    Transform.scale(
-        scale: 2,
-        child: Container(
-          child: Switch(
-            activeTrackColor: Colors.blue,
-            value: value,
-            onChanged: (value) => setState(() => this.value = value),
-          ),
-        ));
+class _personalState extends State<personal> {
+  bool _value = false;
+  void changevalue(bool value) {
+    setState(() {
+      _value = value;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cover Letter'),
+        title: Text('Personal Information'),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Container(
+        child: ListView(children: [
+          Container(
             color: Colors.grey.shade300,
             child: Column(
               children: [
@@ -36,7 +30,7 @@ class _coverletterState extends State<coverletter> {
                   color: Colors.grey.shade300,
                   child: ListTile(
                     leading: Text(
-                      'Cover Letter:',
+                      'Name:',
                       style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 20,
@@ -46,9 +40,27 @@ class _coverletterState extends State<coverletter> {
                 ), //name
                 Card(
                   color: Colors.grey.shade300,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black)),
+                    child: ListTile(
+                      leading: Text(
+                        'Someone',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ), //name
+                Card(
+                  color: Colors.grey.shade300,
                   child: ListTile(
                     leading: Text(
-                      'Date:',
+                      'Address:',
                       style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 20,
@@ -64,7 +76,7 @@ class _coverletterState extends State<coverletter> {
                         border: Border.all(color: Colors.black)),
                     child: ListTile(
                       leading: Text(
-                        'April 06 2021',
+                        'City Name',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -78,7 +90,7 @@ class _coverletterState extends State<coverletter> {
                   color: Colors.grey.shade300,
                   child: ListTile(
                     leading: Text(
-                      'Addressed To:',
+                      'Email:',
                       style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 20,
@@ -94,8 +106,7 @@ class _coverletterState extends State<coverletter> {
                         border: Border.all(color: Colors.black)),
                     child: ListTile(
                       leading: Text(
-                        'Hiring Manager,'
-                        '\nXYZ',
+                        'xyz@gmail.com',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -105,45 +116,22 @@ class _coverletterState extends State<coverletter> {
                     ),
                   ),
                 ), //email
-                Card(
-                  color: Colors.grey.shade300,
-                  child: ListTile(
-                    leading: Text(
-                      'Body:',
-                      style: TextStyle(
-                        color: Colors.grey.shade800,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
+                const SizedBox(
+                  height: 12,
                 ),
-                Card(
-                  color: Colors.grey.shade300,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black)),
-                    child: ListTile(
-                      leading: Text(
-                        'Dear Hiring Manager'
-                        '\nI was excited to see you opening for a Customer'
-                        '\nService Manager, and I hope to be invited for an interview',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ), //email
-
-                // buildswitch(),
-                Image.asset(value ? 'images/mypic.jpeg' : '', height: 100),
+                new SwitchListTile(
+                    activeColor: Colors.red,
+                    activeTrackColor: Colors.yellow,
+                    title: Text('Photo'),
+                    value: _value,
+                    onChanged: (bool value) {
+                      changevalue(value);
+                    }),
+                Image.asset(_value ? 'images/mypic.jpeg' : '', height: 100),
               ],
             ),
           ),
-        ),
+        ]),
       ),
     );
   }

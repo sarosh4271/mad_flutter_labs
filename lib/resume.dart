@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mad_flutter_labs/routes/homeview.dart';
-import 'package:mad_flutter_labs/routes/Routes.dart';
-import 'package:mad_flutter_labs/routes/personal.dart';
-import 'package:mad_flutter_labs/routes/cv.dart';
+import 'package:mad_flutter_labs/cv.dart';
+import 'package:mad_flutter_labs/personal.dart';
 
 class resume extends StatefulWidget {
   @override

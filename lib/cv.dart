@@ -1,102 +1,45 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mad_flutter_labs/widgets/resume.dart';
 
-class personal extends StatefulWidget {
+class coverletter extends StatefulWidget {
   @override
-  _personalState createState() => _personalState();
+  _coverletterState createState() => _coverletterState();
 }
 
-class _personalState extends State<personal> {
-  bool value = true;
-
-  Widget buildswitch() {
-    Transform.scale(
-        scale: 2,
-        child: Container(
-          child: Switch(
-            activeTrackColor: Colors.blue,
-            value: value,
-            onChanged: (value) => setState(() => this.value = value),
-          ),
-        ));
+class _coverletterState extends State<coverletter> {
+  bool _value = false;
+  void changevalue(bool value) {
+    setState(() {
+      _value = value;
+    });
   }
 
-  Widget buildHeader({
-    @required Widget child,
-    @required String text,
-  }) =>
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            text,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          child,
-        ],
-      );
   @override
   Widget build(BuildContext context) {
-    bool isSwitched = false;
-
-    final photobutton = Switch(
-      activeTrackColor: Colors.yellow,
-      activeColor: Colors.orangeAccent,
-      value: isSwitched,
-      onChanged: (value) {
-        setState(() {
-          isSwitched = value;
-        });
-      },
-    );
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Information'),
+        title: Text('Cover Letter'),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Container(
+        child: ListView(children: [
+          Container(
             color: Colors.grey.shade300,
             child: Column(
               children: [
+                new SwitchListTile(
+                    title: Text(
+                      'Cover Letter',
+                      style:
+                          TextStyle(fontSize: 20, color: Colors.grey.shade800),
+                    ),
+                    value: _value,
+                    onChanged: (bool value) {
+                      changevalue(value);
+                    }),
                 Card(
                   color: Colors.grey.shade300,
                   child: ListTile(
                     leading: Text(
-                      'Name:',
-                      style: TextStyle(
-                        color: Colors.grey.shade800,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ), //name
-                Card(
-                  color: Colors.grey.shade300,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black)),
-                    child: ListTile(
-                      leading: Text(
-                        'Muhammad Sarosh',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ), //name
-                Card(
-                  color: Colors.grey.shade300,
-                  child: ListTile(
-                    leading: Text(
-                      'Address:',
+                      'Date:',
                       style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 20,
@@ -112,7 +55,7 @@ class _personalState extends State<personal> {
                         border: Border.all(color: Colors.black)),
                     child: ListTile(
                       leading: Text(
-                        'Faisalabad',
+                        'April 06 2021',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -126,7 +69,7 @@ class _personalState extends State<personal> {
                   color: Colors.grey.shade300,
                   child: ListTile(
                     leading: Text(
-                      'Email:',
+                      'Addressed To:',
                       style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 20,
@@ -142,7 +85,8 @@ class _personalState extends State<personal> {
                         border: Border.all(color: Colors.black)),
                     child: ListTile(
                       leading: Text(
-                        'sarosh4271@gmail.com',
+                        'Hiring Manager,'
+                        '\nXYZ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -156,7 +100,7 @@ class _personalState extends State<personal> {
                   color: Colors.grey.shade300,
                   child: ListTile(
                     leading: Text(
-                      'Photo:',
+                      'Body:',
                       style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 20,
@@ -164,15 +108,29 @@ class _personalState extends State<personal> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
-                // buildHeader(child: buildswitch(), text: 'photo'),
-                Image.asset(value ? 'images/mypic.jpeg' : '', height: 100),
+                Card(
+                  color: Colors.grey.shade300,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black)),
+                    child: ListTile(
+                        leading: Text(
+                            'Dear Hiring Manager,'
+                            '\n I was excited to see your opening'
+                            '\n for a Customer Service Manager'
+                            '\n and I hope to be invited for an'
+                            '\n interview',
+                            style: TextStyle(
+                              color: Colors.grey.shade800,
+                              fontSize: 20,
+                            ))),
+                  ),
+                ), //email
               ],
             ),
           ),
-        ),
+        ]),
       ),
     );
   }
